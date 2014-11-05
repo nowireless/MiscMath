@@ -19,6 +19,6 @@ public class VectorRotation {
 	public static Vector rotateCounterClockWise(Vector vec, @Radian double angle) {
 		double xPrime = vec.getX() * Math.cos(angle) + vec.getY() * Math.sin(angle);
 		double yPrime = vec.getX() * Math.sin(angle) + vec.getY() * Math.cos(angle);
-		return new Vector(xPrime, yPrime);
+		return new ImmutableVector(xPrime, yPrime);
 	}
 }

@@ -7,50 +7,47 @@ import org.nowireless.miscmath.annotations.Radian;
  * @author nowireless
  *
  */
-public class Vector {
+public interface Vector {
 	
-	private final double x;
-	private final double y;
+	/**
+	 * Get the current X position.
+	 * @return The x position
+	 */
+	public double getX();
 	
-	public Vector(double x, double y) {
-		this.x = x;
-		this.y = y;
-	}
-	
-	public double getX() {
-		return x;
-	}
-	
-	public double getY() {
-		return y;
-	}
+	/**
+	 * Get the current Y position.
+	 * @return The Y position
+	 */
+	public double getY();
 	
 	/**
 	 * Calculates the magnitude of the vector.
 	 * @return The magnitude
 	 */
-	public double getMagnitude() {
-		return (x*x) + (y*y);
-	}
-	
+	public double getMagnitude();
+
 	/**
 	 * Calculates the the angle of the vector.
 	 * @return The angle
 	 */
 	@Radian
-	public double getAngle() {
-		return Math.atan2(y, x);
-	}
+	public double getAngle();
 	
 	/**
-	 * Creates a vector with the given values.
-	 * @param magnitude The magnitude of the vector to be.
-	 * @param angle	The angle of the vector to be.
-	 * @return The vector
+	 * Resets the vector
 	 */
-	public static Vector valueOf(double magnitude, @Radian double angle) {
-		double x = Math.sin(angle) * magnitude;
-		double y = Math.cos(angle) * magnitude;
-		return new Vector(x, y);
-	}
+	public void reset();
+	
+	/**
+	 * Adds the provided vector to this one.
+	 * @param vector THe vector to add by
+	 */
+	public void add(Vector vector);
+	
+	/**
+	 * Subtracts the provided vector from this one.
+	 * @param vector The vector to subtract by
+	 */
+	public void subtract(Vector vector);
 }
